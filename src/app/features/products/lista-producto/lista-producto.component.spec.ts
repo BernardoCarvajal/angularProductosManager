@@ -1,3 +1,6 @@
+import { ProductsModule } from '../../products.module';
+import { provideRouter } from '@angular/router';
+import { provideNgxMask } from 'ngx-mask';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListaProductoComponent } from './lista-producto.component';
@@ -8,7 +11,8 @@ describe('ListaProductoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ListaProductoComponent]
+      imports: [ProductsModule],
+      providers: [provideRouter([]), provideNgxMask()]
     })
     .compileComponents();
 
