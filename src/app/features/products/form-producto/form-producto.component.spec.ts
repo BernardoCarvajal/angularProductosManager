@@ -1,3 +1,6 @@
+import { ProductsModule } from '../../products.module';
+import { provideRouter } from '@angular/router';
+import { provideNgxMask } from 'ngx-mask';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormProductoComponent } from './form-producto.component';
@@ -8,7 +11,8 @@ describe('FormProductoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FormProductoComponent]
+      imports: [ProductsModule],
+      providers: [provideRouter([]), provideNgxMask()]
     })
     .compileComponents();
 

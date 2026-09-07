@@ -5,12 +5,12 @@
       <button class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md">Nuevo Producto</button>
     </a>
   </div>
-  
-  <app-filtro-producto 
-    [activeFilter]="activeFilter" 
+
+  <app-filtro-producto
+    [activeFilter]="activeFilter"
     (filterChange)="onFilterChange($event)">
   </app-filtro-producto>
-  
+
   <div class="relative overflow-hidden shadow-md rounded-lg hover:shadow-xl transition-shadow duration-300">
     <table class="w-full text-left">
       <thead class="uppercase bg-[#4B0082] text-[#e5e7eb]">
@@ -18,41 +18,65 @@
           <th class="py-3 px-6 text-center cursor-pointer" (click)="onSort('nombre')">
             <div class="flex items-center justify-center">
               Nombre
-              <svg *ngIf="sortColumn === 'nombre'" class="h-4 w-4 ml-1" 
-                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path *ngIf="sortDirection === 'asc'" fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L10 4.414l-3.293 3.293a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                <path *ngIf="sortDirection === 'desc'" fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L10 15.586l3.293-3.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
+              @if (sortColumn === 'nombre') {
+                <svg class="h-4 w-4 ml-1"
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  @if (sortDirection === 'asc') {
+                    <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L10 4.414l-3.293 3.293a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                  }
+                  @if (sortDirection === 'desc') {
+                    <path fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L10 15.586l3.293-3.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  }
+                </svg>
+              }
             </div>
           </th>
           <th class="py-3 px-6 text-center cursor-pointer" (click)="onSort('descripcion')">
             <div class="flex items-center justify-center">
               Descripción
-              <svg *ngIf="sortColumn === 'descripcion'" class="h-4 w-4 ml-1" 
-                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path *ngIf="sortDirection === 'asc'" fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L10 4.414l-3.293 3.293a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                <path *ngIf="sortDirection === 'desc'" fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L10 15.586l3.293-3.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
+              @if (sortColumn === 'descripcion') {
+                <svg class="h-4 w-4 ml-1"
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  @if (sortDirection === 'asc') {
+                    <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L10 4.414l-3.293 3.293a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                  }
+                  @if (sortDirection === 'desc') {
+                    <path fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L10 15.586l3.293-3.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  }
+                </svg>
+              }
             </div>
           </th>
           <th class="py-3 px-6 text-center cursor-pointer" (click)="onSort('date')">
             <div class="flex items-center justify-center">
               Fecha
-              <svg *ngIf="sortColumn === 'date'" class="h-4 w-4 ml-1" 
-                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path *ngIf="sortDirection === 'asc'" fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L10 4.414l-3.293 3.293a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                <path *ngIf="sortDirection === 'desc'" fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L10 15.586l3.293-3.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
+              @if (sortColumn === 'date') {
+                <svg class="h-4 w-4 ml-1"
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  @if (sortDirection === 'asc') {
+                    <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L10 4.414l-3.293 3.293a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                  }
+                  @if (sortDirection === 'desc') {
+                    <path fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L10 15.586l3.293-3.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  }
+                </svg>
+              }
             </div>
           </th>
           <th class="py-3 px-6 text-center cursor-pointer" (click)="onSort('status')">
             <div class="flex items-center justify-center">
               Estado
-              <svg *ngIf="sortColumn === 'status'" class="h-4 w-4 ml-1" 
-                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path *ngIf="sortDirection === 'asc'" fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L10 4.414l-3.293 3.293a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                <path *ngIf="sortDirection === 'desc'" fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L10 15.586l3.293-3.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-              </svg>
+              @if (sortColumn === 'status') {
+                <svg class="h-4 w-4 ml-1"
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  @if (sortDirection === 'asc') {
+                    <path fill-rule="evenodd" d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L10 4.414l-3.293 3.293a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                  }
+                  @if (sortDirection === 'desc') {
+                    <path fill-rule="evenodd" d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L10 15.586l3.293-3.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                  }
+                </svg>
+              }
             </div>
           </th>
           <th class="py-3 px-6 text-center">Acciones</th>
@@ -60,103 +84,107 @@
         </tr>
       </thead>
       <tbody class="bg-[#F5F5F5] text-[#6b7280]">
-        <ng-container *ngIf="(product$ | async) as products">
-          <tr *ngFor="let product of products" class="border-b border-gray-200">
-            <td class="py-3 px-6 text-center">{{ product.nombre }}</td>
-            <td class="py-3 px-6 text-center">{{ product.descripcion || 'Sin descripción' }}</td>
-            <td class="py-3 px-6 text-center">{{ product.date | dateFormat }}</td>
-            <td class="py-3 px-6 text-center">
-              <app-badge [status]="product.status"></app-badge>
-            </td>
-            <td class="py-3 px-6 text-center">
-              <div class="flex justify-center space-x-3">
-                <a [routerLink]="['/productos/editar', product.id]" 
-                  class="text-indigo-600 hover:text-indigo-900">
-                  Editar
-                </a>
-                <button (click)="deleteProduct(product.id!)" 
-                  class="text-red-600 hover:text-red-800 bg-transparent border-none cursor-pointer">
-                  Eliminar
+        @if ((product$ | async); as products) {
+          @for (product of products; track product) {
+            <tr class="border-b border-gray-200">
+              <td class="py-3 px-6 text-center">{{ product.nombre }}</td>
+              <td class="py-3 px-6 text-center">{{ product.descripcion || 'Sin descripción' }}</td>
+              <td class="py-3 px-6 text-center">{{ product.date | dateFormat }}</td>
+              <td class="py-3 px-6 text-center">
+                <app-badge [status]="product.status"></app-badge>
+              </td>
+              <td class="py-3 px-6 text-center">
+                <div class="flex justify-center space-x-3">
+                  <a [routerLink]="['/productos/editar', product.id]"
+                    class="text-indigo-600 hover:text-indigo-900">
+                    Editar
+                  </a>
+                  <button (click)="deleteProduct(product.id!)"
+                    class="text-red-600 hover:text-red-800 bg-transparent border-none cursor-pointer">
+                    Eliminar
+                  </button>
+                </div>
+              </td>
+              <td class="py-3 px-6 text-center">
+                <button
+                  type="button"
+                  class="inline-flex items-center justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
+                  (click)="openChangeStatusModal(product)">
+                  Cambiar estado
                 </button>
-              </div>
-            </td>
-            <td class="py-3 px-6 text-center">
-              <button 
-                type="button"
-                class="inline-flex items-center justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
-                (click)="openChangeStatusModal(product)">
-                Cambiar estado
-              </button>
-            </td>
-          </tr>
-          <tr *ngIf="products.length === 0">
-            <td colspan="6" class="py-3 px-6 text-center text-gray-500">
-              No hay productos disponibles con el filtro actual.
-            </td>
-          </tr>
-        </ng-container>
+              </td>
+            </tr>
+          }
+          @if (products.length === 0) {
+            <tr>
+              <td colspan="6" class="py-3 px-6 text-center text-gray-500">
+                No hay productos disponibles con el filtro actual.
+              </td>
+            </tr>
+          }
+        }
       </tbody>
     </table>
   </div>
 </div>
 
 <!-- Modal de cambio de estado -->
-<div *ngIf="selectedProduct && showStatusModal" class="fixed inset-0 overflow-y-auto flex items-center justify-center z-50">
-  <div class="fixed inset-0 bg-black bg-opacity-50 transition-opacity" (click)="closeChangeStatusModal()"></div>
-  
-  <div class="bg-white rounded-lg shadow-xl transform transition-all max-w-lg w-full p-6 relative z-10">
-    <div class="flex justify-between items-center mb-4">
-      <h3 class="text-lg font-medium text-gray-900">Cambiar estado del producto</h3>
-      <button type="button" class="text-gray-400 hover:text-gray-500" (click)="closeChangeStatusModal()">
-        <span class="sr-only">Cerrar</span>
-        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-    </div>
-    
-    <div class="mb-4">
-      <p class="text-sm text-gray-500">Producto: <span class="font-medium text-gray-700">{{ selectedProduct?.nombre }}</span></p>
-      <p class="text-sm text-gray-500">Estado actual: <span class="font-medium text-gray-700">
-        <app-badge *ngIf="selectedProduct" [status]="selectedProduct.status"></app-badge>
-      </span></p>
-    </div>
-    
-    <div class="mb-6">
-      <p class="text-sm font-medium text-gray-700 mb-2">Selecciona el nuevo estado:</p>
-      <div class="space-y-2">
-        <div class="flex items-center">
-          <input type="radio" id="state-1" name="state" [value]="1" [(ngModel)]="newStatus" 
-            [disabled]="selectedProduct?.status === 1" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300">
-          <label for="state-1" class="ml-3 block text-sm font-medium text-gray-700">
-            Inicial
-          </label>
+@if (selectedProduct && showStatusModal) {
+  <div class="fixed inset-0 overflow-y-auto flex items-center justify-center z-50">
+    <div class="fixed inset-0 bg-black bg-opacity-50 transition-opacity" (click)="closeChangeStatusModal()"></div>
+    <div class="bg-white rounded-lg shadow-xl transform transition-all max-w-lg w-full p-6 relative z-10">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-lg font-medium text-gray-900">Cambiar estado del producto</h3>
+        <button type="button" class="text-gray-400 hover:text-gray-500" (click)="closeChangeStatusModal()">
+          <span class="sr-only">Cerrar</span>
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="mb-4">
+        <p class="text-sm text-gray-500">Producto: <span class="font-medium text-gray-700">{{ selectedProduct?.nombre }}</span></p>
+        <p class="text-sm text-gray-500">Estado actual: <span class="font-medium text-gray-700">
+          @if (selectedProduct) {
+            <app-badge [status]="selectedProduct.status"></app-badge>
+          }
+        </span></p>
+      </div>
+      <div class="mb-6">
+        <p class="text-sm font-medium text-gray-700 mb-2">Selecciona el nuevo estado:</p>
+        <div class="space-y-2">
+          <div class="flex items-center">
+            <input type="radio" id="state-1" name="state" [value]="1" [(ngModel)]="newStatus"
+              [disabled]="selectedProduct?.status === 1" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300">
+              <label for="state-1" class="ml-3 block text-sm font-medium text-gray-700">
+                Inicial
+              </label>
+            </div>
+            <div class="flex items-center">
+              <input type="radio" id="state-2" name="state" [value]="2" [(ngModel)]="newStatus" [disabled]="selectedProduct?.status === 2" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300">
+              <label for="state-2" class="ml-3 block text-sm font-medium text-gray-700">
+                Pendiente
+              </label>
+            </div>
+            <div class="flex items-center">
+              <input type="radio" id="state-3" name="state" [value]="3" [(ngModel)]="newStatus" [disabled]="selectedProduct?.status === 3" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300">
+              <label for="state-3" class="ml-3 block text-sm font-medium text-gray-700">
+                Completado
+              </label>
+            </div>
+          </div>
         </div>
-        <div class="flex items-center">
-          <input type="radio" id="state-2" name="state" [value]="2" [(ngModel)]="newStatus" [disabled]="selectedProduct?.status === 2" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300">
-          <label for="state-2" class="ml-3 block text-sm font-medium text-gray-700">
-            Pendiente
-          </label>
-        </div>
-        <div class="flex items-center">
-          <input type="radio" id="state-3" name="state" [value]="3" [(ngModel)]="newStatus" [disabled]="selectedProduct?.status === 3" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300">
-          <label for="state-3" class="ml-3 block text-sm font-medium text-gray-700">
-            Completado
-          </label>
+        <div class="flex justify-end space-x-3">
+          <button type="button" class="py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none" (click)="closeChangeStatusModal()">
+            Cancelar
+          </button>
+          <button type="button"
+            class="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"
+            [disabled]="newStatus === null || (selectedProduct && selectedProduct.status === newStatus)"
+            (click)="confirmStatusChange()">
+            Confirmar
+          </button>
         </div>
       </div>
     </div>
-    
-    <div class="flex justify-end space-x-3">
-      <button type="button" class="py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none" (click)="closeChangeStatusModal()">
-        Cancelar
-      </button>
-      <button type="button" 
-        class="py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none"
-        [disabled]="newStatus === null || (selectedProduct && selectedProduct.status === newStatus)"
-        (click)="confirmStatusChange()">
-        Confirmar
-      </button>
-    </div>
-  </div>
-</div>
+  }
